@@ -14,19 +14,19 @@ class Driver {
     this.id = ++driverId
 
     store.drivers.push(this)
-  }
+  };
 
   trips(){
     return store.trips.filter(function(trip){
       return trip.driverId === this.id
     }.bind(this))
-  }
+  };
 
   passengers(){
     return this.trips().map(function(trip){
       return trip.passenger()
     })
-  }
+  };
 }
 
 class Passenger {
@@ -35,19 +35,19 @@ class Passenger {
     this.id = ++passengerId
 
     store.passengers.push(this)
-  }
+  };
 
   trips(){
     return store.trips.filter(function(trip){
       return trip.passengerId === this.id
     }.bind(this))
-  }
+  };
 
   drivers(){
     return this.trips().map(function(trip){
       return trip.driver()
     })
-  }
+  };
 }
 
 class Trip{
@@ -61,26 +61,17 @@ class Trip{
     this.id = ++tripId
 
     store.trips.push(this)
-  }
+  };
 
   driver(){
     return store.drivers.find(function(driver){
       return driver.id === this.driverId
     }.bind(this))
-  }
+  };
 
   passenger(){
     return store.passengers.find(function(passenger){
       return passenger.id === this.passengerId
     }.bind(this))
-  }
+  };
 }
-
-
-
-
-
-
-
-
-
